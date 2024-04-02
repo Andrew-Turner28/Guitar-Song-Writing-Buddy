@@ -20,9 +20,13 @@ To install, follow these steps:
 1. Clone this repository, or download the source code to your computer.
 2. Navigate to the directory with the source code.
 3. Compile the .cpp file with a C++ compiler (g++, clang, etc.).
-3.     clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
+```
+clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
+```
 4. Run Compiled Program.
-4.     ./guitarBuddy
+```
+./guitarBuddy
+```
    
 ## Usage
 To use the program, follow these directions:
@@ -33,6 +37,7 @@ To use the program, follow these directions:
 4. Continue to map more chords, or exit the program.
 
 ## Example
+```
 Please Input Chord: Amaj
 
 Amaj Chord: 
@@ -48,6 +53,7 @@ E: 5 ||---|---|---|---|-R-|---|---|---|-3-|---|---|-5-|
                 3       5       7       9          12
 
 Map Another Chord? [Y/N]:
+```
 
 ## Future Plans
 - Expand compatible chords to include: Augmented, Sus2, Sus4, Diminished, Major 7th, Minor 7th, and Dominant 7th chords.
