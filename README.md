@@ -20,11 +20,9 @@ To install, follow these steps:
 1. Clone this repository, or download the source code to your computer.
 2. Navigate to the directory with the source code.
 3. Compile the .cpp file with a C++ compiler (g++, clang, etc.).
-4.     Ex:
-5.     clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
-6. Run Compiled Program.
-    Ex:
-      ./guitarBuddy
+3.     clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
+4. Run Compiled Program.
+4.     ./guitarBuddy
    
 ## Usage
 To use the program, follow these directions:
