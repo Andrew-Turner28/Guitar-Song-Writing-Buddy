@@ -165,7 +165,7 @@ int main() {
         cout << "                3       5       7       9          12" << endl;
 
         while (true) {
-            cout << "Map Another Chord? [Y/N]: ";
+            cout << endl << "Map Another Chord? [Y/N]: ";
             cin >> continueInput;
             if (continueInput == "N" || continueInput == "n") {
                 keepGoing = false;
@@ -173,10 +173,10 @@ int main() {
             } else if (continueInput == "Y" || continueInput == "y") {
                 break;
             } else {
-                cout << "Invalid Input. Please enter Y for yes or N for no." << endl;
+                cout << "Invalid Input. Please enter Y to continue or N to exit." << endl;
             }
         }
     }
-    cout << "Thank You For Using." << endl;
+    cout << "Thank You For Using!" << endl;
     return 0;
 }
