@@ -1,24 +1,25 @@
 # Guitar Song Writing Buddy
 
 ## Overview
-The Guitar Song Writing Buddy is a tool aid songwriters and guitarists in visualizing how chords are mapped on a guitar fretboard. It shows the location of all neccessary notes for inputted chords and their location on the fretboard.
+The Guitar Song Writing Buddy is a tool to aid songwriters and guitarists in visualizing how chords are mapped on a guitar fretboard. It shows the location of all necessary notes for inputted chords and their location on the fretboard.
 
 ## Features
 - Supports all major and minor chords in Standard Tuning.
 - Visual representation of finger placement on guitar strings/frets.
-- Details all neccessary notes for ewch chord (ex. Root, Minor Third, Perfect Fifth, etc)
+- Details all necessary notes for each chord (ex. Root, Minor Third, Perfect Fifth, etc.)
 - Interactive command-line interface.
 
 ## Prerequisites
-- Computer with cimmand-line interface.
+- Computer with command-line interface.
 - Basic understanding of guitar.
 - Basic understanding of C++ program compilation and running.
 
 ## Installation
 To install, follow these steps:
-1. Clone this repository, or downlaod source code to your computer.
+
+1. Clone this repository, or download the source code to your computer.
 2. Navigate to the directory with the source code.
-3. Compile .cpp file with a C++ compiler (g++, clang, etc).
+3. Compile the .cpp file with a C++ compiler (g++, clang, etc.).
     Ex:
      clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
 4. Run Compiled Program.
@@ -51,9 +52,9 @@ E: 5 ||---|---|---|---|-R-|---|---|---|-3-|---|---|-5-|
 Map Another Chord? [Y/N]:
 
 ## Future Plans
-- Expand compatable chords to include: Augmented, Sus2, Sus4, Diminished, Major 7th, Minor 7th, and Dominant 7th chords.
+- Expand compatible chords to include: Augmented, Sus2, Sus4, Diminished, Major 7th, Minor 7th, and Dominant 7th chords.
 - Support for alternate tunings.
 - Eventual launch as a hosted web application.
 
 ## Contact
-If you have any questions, issues, or wnat to collaborate, please contact me at turnerandrew284@gmail.com
+If you have any questions, issues, or want to collaborate, please contact me at turnerandrew284@gmail.com
