@@ -8,6 +8,8 @@ using namespace std;
 string getChordInfo(string chordName) {
     string chordInfo = "";
     // chordInfo Structure: [Type of Chord].[Root].[Type of 3rd/2nd/4th].[Type of 5th].[Type of 7th (if applicable)].[Note 1].[Note 2].[Note 3].[Note 4(if applicable)]
+   
+    //Major Chords Archive
     if(chordName.compare("Cmaj") == 0) {
     chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.C.E.G.n/a";
     } else if(chordName.compare("C#maj") == 0 || chordName.compare("Dbmaj") == 0) {
@@ -32,7 +34,10 @@ string getChordInfo(string chordName) {
         chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.A#/Bb.D.F.n/a";
     } else if(chordName.compare("Bmaj") == 0) {
         chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.B.D#/Eb.F#/Gb.n/a";
-    } else if(chordName.compare("Cm") == 0) {
+    } 
+    
+    //Minor Chords Archive
+    else if(chordName.compare("Cm") == 0) {
         chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.C.Eb/G.G.n/a";
     } else if(chordName.compare("C#m") == 0 || chordName.compare("Dbm") == 0) {
         chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.C#/Db.E.G#/Ab.n/a";
@@ -56,7 +61,38 @@ string getChordInfo(string chordName) {
         chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.A#/Bb.C#/Db.F.n/a";
     } else if(chordName.compare("Bm") == 0) {
         chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.B.D.F#/Gb.n/a";
-    } else {
+    } 
+
+    //Diminished Chords
+    else if(chordName.compare("Cdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C.D#/Eb.F#/Gb.n/a";
+    }else if(chordName.compare("C#dim") == 0 || chordName.compare("Dbdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C#/Db.E.G.n/a";
+    } else if(chordName.compare("Ddim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.D.F.A#/Bb.n/a";
+    } else if(chordName.compare("D#dim") == 0 || chordName.compare("Ebdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.D#/Eb.F#/Gb.B.n/a";
+    } else if(chordName.compare("Edim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.E.G.C#/Db.n/a";
+    } else if(chordName.compare("Fdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.F.G#/Ab.D.n/a";
+    } else if(chordName.compare("F#dim") == 0 || chordName.compare("Gbdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.F#/Gb.A.D#/Eb.n/a";
+    } else if(chordName.compare("Gdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.G.A#/Bb.E.n/a";
+    } else if(chordName.compare("G#dim") == 0 || chordName.compare("Abdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.G#/Ab.B.F#/Gb.n/a";
+    } else if(chordName.compare("Adim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.A.C.G.n/a";
+    } else if(chordName.compare("A#dim") == 0 || chordName.compare("Bbdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.A#/Bb.C#/Db.G#/Ab.n/a";
+    } else if(chordName.compare("Bdim") == 0) {
+        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.B.D.F.n/a";
+    }
+
+    
+    //Else Case
+    else {
         chordInfo = "Error";
     }
 
