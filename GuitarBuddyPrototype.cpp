@@ -35,6 +35,33 @@ string getChordInfo(string chordName) {
     } else if(chordName.compare("Bmaj") == 0) {
         chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.B.D#/Eb.F#/Gb.n/a";
     } 
+
+    //Major Seventh Chords Archive
+    else if(chordName.compare("Cmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.C.E.G.B";
+    } else if(chordName.compare("C#maj7") == 0 || chordName.compare("Dbmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.C#/Db.F.G#/Ab.C";
+    } else if(chordName.compare("Dmaj7") == 0) {
+    chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.D.F#/Gb.A.C#/Db";
+    } else if(chordName.compare("D#maj7") == 0 || chordName.compare("Ebmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.D#/Eb.G.A#/Bb.D";
+    } else if(chordName.compare("Emaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.E.G#/Ab.B.D#/Eb";
+    } else if(chordName.compare("Fmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.F.A.C.E";
+    } else if(chordName.compare("F#maj7") == 0 || chordName.compare("Gbmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.F#/Gb.A#/Bb.C#/Db.F";
+    } else if(chordName.compare("Gmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.G.B.D.F#/Gb";
+    } else if(chordName.compare("G#maj7") == 0 || chordName.compare("Abmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.G#/Ab.C.Eb/G.F#/G";
+    } else if(chordName.compare("Amaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.A.C#/Db.E.G#/Ab";
+    } else if(chordName.compare("A#maj7") == 0 || chordName.compare("Bbmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.A#/Bb.D.F.A";
+    } else if(chordName.compare("Bmaj7") == 0) {
+        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.B.D#/Eb.F#/Gb.A#/Bb";
+    }
     
     //Minor Chords Archive
     else if(chordName.compare("Cm") == 0) {
@@ -63,7 +90,62 @@ string getChordInfo(string chordName) {
         chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.B.D.F#/Gb.n/a";
     } 
 
-    //Diminished Chords
+    //Minor Seventh Chords Archive
+    else if(chordName.compare("Cm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.C.Eb/G.D#/Eb.A#/Bb";
+    } else if(chordName.compare("C#m7") == 0 || chordName.compare("Dbm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.C#/Db.E.G#/Ab.B";
+    } else if(chordName.compare("Dm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.D.F.A.C";
+    } else if(chordName.compare("D#m7") == 0 || chordName.compare("Ebm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.D#/Eb.F#/Gb.A#/Bb.C#/Db";
+    } else if(chordName.compare("Em7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.E.G.B.D";
+    } else if(chordName.compare("Fm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.F.Ab/C.G#/Ab.D#/Eb";
+    } else if(chordName.compare("F#m7") == 0 || chordName.compare("Gbm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.F#/Gb.A.C#/Db.E";
+    } else if(chordName.compare("Gm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.G.Bb/D.A#/Bb.F";
+    } else if(chordName.compare("G#m7") == 0 || chordName.compare("Abm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.G#/Ab.B/D#.C#/Db.F#/Gb";
+    } else if(chordName.compare("Am7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.A.C.E.G";
+    } else if(chordName.compare("A#m7") == 0 || chordName.compare("Bbm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.A#/Bb.C#/Db.F.A#/Bb";
+    } else if(chordName.compare("Bm7") == 0) {
+        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.B.D.F#/Gb.A";
+    }
+
+    //Dominant Seventh Chords Archive
+    else if(chordName.compare("C7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.C.E.G.A#/Bb";
+    } else if(chordName.compare("C#7") == 0 || chordName.compare("Db7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.C#/Db.F.G#/Ab.C/B";
+    } else if(chordName.compare("D7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.D.F#/Gb.A.C";
+    } else if(chordName.compare("D#7") == 0 || chordName.compare("Eb7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.D#/Eb.G.A#/Bb.C#/Db";
+    } else if(chordName.compare("E7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.E.G#/Ab.B.D";
+    } else if(chordName.compare("F7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.F.A.C.D#/Eb";
+    } else if(chordName.compare("F#7") == 0 || chordName.compare("Gb7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.F#/Gb.A#/Bb.C#/Db.E";
+    } else if(chordName.compare("G7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.G.B.D.F";
+    } else if(chordName.compare("G#7") == 0 || chordName.compare("Ab7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.G#/Ab.C.Eb/Gb.F#/Gb";
+    } else if(chordName.compare("A7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.A.C#/Db.E.G";
+    } else if(chordName.compare("A#7") == 0 || chordName.compare("Bb7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.A#/Bb.D.F.A";
+    } else if(chordName.compare("B7") == 0) {
+        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.B.D#/Eb.F#/Gb.A";
+    }
+
+
+    //Diminished Chords Archive
     else if(chordName.compare("Cdim") == 0) {
         chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C.D#/Eb.F#/Gb.n/a";
     }else if(chordName.compare("C#dim") == 0 || chordName.compare("Dbdim") == 0) {
@@ -90,7 +172,6 @@ string getChordInfo(string chordName) {
         chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.B.D.F.n/a";
     }
 
-    
     //Else Case
     else {
         chordInfo = "Error";
@@ -106,7 +187,7 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
     while (getline(iss, part, '.')) {
         parts.push_back(part);
     }
-    string root = parts[5], third = parts[6], fifth = parts[7];
+    string root = parts[5], third = parts[6], fifth = parts[7], seventh = parts[8];
 
     map<string, vector<string>> masterArrays;
     masterArrays["highE"] = {"E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E"};
@@ -125,6 +206,7 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
             if(masterArray[i] == root) populatedStrings[i] = "R";
             else if(masterArray[i] == third) populatedStrings[i] = "3";
             else if(masterArray[i] == fifth) populatedStrings[i] = "5";
+            else if(masterArray[i] == seventh) populatedStrings[i] = "7";
         }
     }
     return populatedStrings;
@@ -183,7 +265,15 @@ int main() {
         vector<string> lowE_String = populateGuitarString(chordInfo, "lowE");
 
         cout << endl << chordInput << " Chord: " << endl;
-        cout << "Comprised of Root(" << parts[5] << "), " << parts[2] << "(" << parts[6] << "), and " << parts[3] << "(" << parts[7] << ")" << endl;
+
+        string chordName = parts[0];
+        if(chordName.compare("Major Seventh") == 0 || chordName.compare("Minor Seventh") == 0 || chordName.compare("Dominant Seventh") == 0) {
+            cout << "Comprised of Root(" << parts[5] << "), " << parts[2] << "(" << parts[6] << "), " << parts[3] << "(" << parts[7] << ")" << ", and " << parts[4] << "(" << parts[8] << ")" << endl;
+        }
+        else {
+            cout << "Comprised of Root(" << parts[5] << "), " << parts[2] << "(" << parts[6] << "), and " << parts[3] << "(" << parts[7] << ")" << endl;
+        }
+        
         cout << "     __________________________________________________" << endl;
         cout << "E: ";
         printStrings(highE_String);
