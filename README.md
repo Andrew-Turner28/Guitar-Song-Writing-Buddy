@@ -4,7 +4,15 @@
 The Guitar Song Writing Buddy is a tool to aid songwriters and guitarists in visualizing how chords are mapped on a guitar fretboard. It shows the location of all necessary notes for inputted chords and their location on the fretboard.
 
 ## Features
-- Supports all major and minor chords in Standard Tuning.
+- Supports all of the following chords in Standard Tuning:
+   * Major
+   * Minor
+   * Major 7th
+   * Minor 7th
+   * Dominant 7th
+   * Diminished
+   * Augmented
+   * Augmented 7th chords
 - Visual representation of finger placement on guitar strings/frets.
 - Details all necessary notes for each chord (ex. Root, Minor Third, Perfect Fifth, etc.)
 - Interactive command-line interface.
@@ -56,7 +64,7 @@ Map Another Chord? [Y/N]:
 ```
 
 ## Future Plans
-- Expand compatible chords to include: Augmented, Sus2, Sus4, Diminished, Major 7th, Minor 7th, and Dominant 7th chords.
+- Expand compatible chords to include: Sus2 and Sus4 chords.
 - Support for alternate tunings.
 - Eventual launch as a hosted web application.
 
