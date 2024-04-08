@@ -143,8 +143,7 @@ string getChordInfo(string chordName) {
     } else if(chordName.compare("B7") == 0) {
         chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.B.D#/Eb.F#/Gb.A";
     }
-
-
+ 
     //Diminished Chords Archive
     else if(chordName.compare("Cdim") == 0) {
         chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C.D#/Eb.F#/Gb.n/a";
@@ -172,6 +171,61 @@ string getChordInfo(string chordName) {
         chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.B.D.F.n/a";
     }
 
+    //Augmented Chords Archive
+    else if(chordName.compare("Caug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.C.E.G#/Ab.n/a";
+    } else if(chordName.compare("C#aug") == 0 || chordName.compare("Dbaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.C#/Db.F.A.n/a";
+    } else if(chordName.compare("Daug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.D.F#/Gb.A#/Bb.n/a";
+    } else if(chordName.compare("D#aug") == 0 || chordName.compare("Ebaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.D#/Eb.G.B.n/a";
+    } else if(chordName.compare("Eaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.E.G#/Ab.C.n/a";
+    } else if(chordName.compare("Faug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.F.A.C#/Db.n/a";
+    } else if(chordName.compare("F#aug") == 0 || chordName.compare("Gbaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.F#/Gb.A#/Bb.D.n/a";
+    } else if(chordName.compare("Gaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.G.B.D#/Eb.n/a";
+    } else if(chordName.compare("G#aug") == 0 || chordName.compare("Abaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.G#/Ab.C.E.n/a";
+    } else if(chordName.compare("Aaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.A.C#/Db.F.n/a";
+    } else if(chordName.compare("A#aug") == 0 || chordName.compare("Bbaug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.A#/Bb.D.F#/Gb.n/a";
+    } else if(chordName.compare("Baug") == 0) {
+        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.B.D#/Eb.G.n/a";
+    }
+
+    //Augmented Seventh Chords Archive
+    else if(chordName.compare("Caug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.C.E.G#/Ab.A#/Bb";
+    } else if(chordName.compare("C#aug7") == 0 || chordName.compare("Dbaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.C#/Db.F.A.B";
+    } else if(chordName.compare("Daug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.D.F#/Gb.A#/Bb.C";
+    } else if(chordName.compare("D#aug7") == 0 || chordName.compare("Ebaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.D#/Eb.G.B.C#/Db";
+    } else if(chordName.compare("Eaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.E.G#/Ab.C.D";
+    } else if(chordName.compare("Faug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.F.A.C#/Db.D#/Eb";
+    } else if(chordName.compare("F#aug7") == 0 || chordName.compare("Gbaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.F#/Gb.A#/Bb.D.E";
+    } else if(chordName.compare("Gaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.G.B.D#/Eb.F";
+    } else if(chordName.compare("G#aug7") == 0 || chordName.compare("Abaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.G#/Ab.C.E.F#/Gb";
+    } else if(chordName.compare("Aaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.A.C#/Db.F.G";
+    } else if(chordName.compare("A#aug7") == 0 || chordName.compare("Bbaug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.A#/Bb.D.F#/Gb.G#/Ab";
+    } else if(chordName.compare("Baug7") == 0) {
+        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.B.D#/Eb.G.A";
+    }
+
+
     //Else Case
     else {
         chordInfo = "Error";
@@ -181,14 +235,19 @@ string getChordInfo(string chordName) {
 }
 
 vector<string> populateGuitarString(string chordInfo, string stringName) {
-    vector<string> parts;
+    //create vector to store parts of broken up string
+    vector<string> chordInfoVector;
     istringstream iss(chordInfo);
     string part;
-    while (getline(iss, part, '.')) {
-        parts.push_back(part);
-    }
-    string root = parts[5], third = parts[6], fifth = parts[7], seventh = parts[8];
 
+    //split string and break into chordInfoVector 
+    while (getline(iss, part, '.')) {
+        chordInfoVector.push_back(part);
+    }
+    //attribute values for chord into  variables
+    string root = chordInfoVector[5], third = chordInfoVector[6], fifth = chordInfoVector[7], seventh = chordInfoVector[8];
+
+    //Master array for each string in standard tuning
     map<string, vector<string>> masterArrays;
     masterArrays["highE"] = {"E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E"};
     masterArrays["B"] = {"B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"};
@@ -197,9 +256,11 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
     masterArrays["A"] = {"A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A"};
     masterArrays["lowE"] = {"E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E"};
 
+    //fill strings with dashes
     vector<string> populatedStrings(13, "-");
     populatedStrings[0] = " ";
 
+    //loop through strings and mark location of notes
     if(masterArrays.find(stringName) != masterArrays.end()) {
         const vector<string>& masterArray = masterArrays[stringName];
         for(size_t i = 0; i < masterArray.size(); ++i) {
@@ -213,6 +274,7 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
 }
 
 void printStrings(const vector<string>& stringNotes) {
+    //loop and print notes in conjunction with ASCII for fretboard representation
     for (int i = 0; i < stringNotes.size(); i++) {
         if (i == 0) {
             cout << stringNotes[i] << " ||-";
@@ -230,16 +292,20 @@ int main() {
     bool keepGoing = true;
     string continueInput;
     bool validChordInput = false;
+                                                             
+    cout << "Welcome to the Guitar Buddy!" << endl << endl;
+    cout << "This program is compatible with " << endl;
 
+    //runtime loop
     while (keepGoing) {
         while(validChordInput == false) {
-            cout << "Please Input Chord: ";
+            cout << "Please Input Chord You'd Like to Map: ";
             cin >> chordInput;
 
             string testChordInfo = getChordInfo(chordInput);
 
             if(testChordInfo.compare("Error") == 0) {
-                cout << endl << "Invalid Chord Input. Please check your formatting. Ex. C#m, Amaj, Em" << endl;
+                cout << endl << "Unrecognised Chord Input. Please check your formatting. Ex. C#m, Amaj, Em, Gaug7" << endl;
             }
             else {
                 validChordInput = true;
@@ -250,13 +316,15 @@ int main() {
         
         string chordInfo = getChordInfo(chordInput);
 
-        vector<string> parts;
+        //populate chordInfoVector
+        vector<string> chordInfoVector;
         istringstream iss(chordInfo);
         string part;
         while (getline(iss, part, '.')) {
-            parts.push_back(part);
+            chordInfoVector.push_back(part);
         }
 
+        //populate all guitar strings
         vector<string> highE_String = populateGuitarString(chordInfo, "highE");
         vector<string> b_String = populateGuitarString(chordInfo, "B");
         vector<string> g_String = populateGuitarString(chordInfo, "G");
@@ -264,16 +332,19 @@ int main() {
         vector<string> a_String = populateGuitarString(chordInfo, "A");
         vector<string> lowE_String = populateGuitarString(chordInfo, "lowE");
 
+        //print chord information 
         cout << endl << chordInput << " Chord: " << endl;
 
-        string chordName = parts[0];
-        if(chordName.compare("Major Seventh") == 0 || chordName.compare("Minor Seventh") == 0 || chordName.compare("Dominant Seventh") == 0) {
-            cout << "Comprised of Root(" << parts[5] << "), " << parts[2] << "(" << parts[6] << "), " << parts[3] << "(" << parts[7] << ")" << ", and " << parts[4] << "(" << parts[8] << ")" << endl;
+        string chordName = chordInfoVector[0];
+        //case check for if it involves a seventh note
+        if(chordName.compare("Major Seventh") == 0 || chordName.compare("Minor Seventh") == 0 || chordName.compare("Dominant Seventh") == 0 || chordName.compare("Augmented Seventh") == 0) {
+            cout << "Comprised of Root(" << chordInfoVector[5] << "), " << chordInfoVector[2] << "(" << chordInfoVector[6] << "), " << chordInfoVector[3] << "(" << chordInfoVector[7] << ")" << ", and " << chordInfoVector[4] << "(" << chordInfoVector[8] << ")" << endl;
         }
         else {
-            cout << "Comprised of Root(" << parts[5] << "), " << parts[2] << "(" << parts[6] << "), and " << parts[3] << "(" << parts[7] << ")" << endl;
+            cout << "Comprised of Root(" << chordInfoVector[5] << "), " << chordInfoVector[2] << "(" << chordInfoVector[6] << "), and " << chordInfoVector[3] << "(" << chordInfoVector[7] << ")" << endl;
         }
         
+        //print fretboard with populated string vectors
         cout << "     __________________________________________________" << endl;
         cout << "E: ";
         printStrings(highE_String);
@@ -290,6 +361,8 @@ int main() {
         cout << "     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯" << endl;
         cout << "                3       5       7       9          12" << endl;
 
+
+        //loop to continue acceptting more chords
         while (true) {
             cout << endl << "Map Another Chord? [Y/N]: ";
             cin >> continueInput;

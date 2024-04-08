@@ -5,6 +5,9 @@
         "string_view": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "__split_buffer": "cpp",
+        "istream": "cpp"
     }
 }
