@@ -8,6 +8,10 @@
         "iosfwd": "cpp",
         "iostream": "cpp",
         "__split_buffer": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ostream": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp"
     }
 }

@@ -1,292 +1,166 @@
+// Project: Guitar Songwriting Buddy
+// Author: Andrew Turner
+// Date: April 9, 2024
+// License: MIT License
+
+/*
+Description: 
+The Guitar Song Writing Buddy is a tool to aid songwriters and guitarists in visualizing how chords are mapped on a guitar fretboard. 
+It shows the location of all necessary notes for inputted chords and their location on the fretboard.
+
+Current Compatible Chords:
+    *Major (_ maj or _ #maj)
+    * Minor (_ m or _ #m)
+    * Major 7th (_ maj7 or _ #maj7)
+    * Minor 7th (_ m7 or _ #m7)
+    * Dominant 7th (_ 7 or _ #7)
+    * Diminished (_ dim or _ #dim)
+    * Augmented (_ aug or _ #aug)
+    * Augmented 7th (_ aug7 or _ #aug7)
+    * Suspended Second (_ sus2 or _ #sus2)
+    * Suspended Fourth (_ sus4 or _ #sus4)       
+*/
+
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 using namespace std;
 
-string getChordInfo(string chordName) {
-    string chordInfo = "";
-    // chordInfo Structure: [Type of Chord].[Root].[Type of 3rd/2nd/4th].[Type of 5th].[Type of 7th (if applicable)].[Note 1].[Note 2].[Note 3].[Note 4(if applicable)]
-   
-    //Major Chords Archive
-    if(chordName.compare("Cmaj") == 0) {
-    chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.C.E.G.n/a";
-    } else if(chordName.compare("C#maj") == 0 || chordName.compare("Dbmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.C#/Db.F.G#/Ab.n/a";
-    } else if(chordName.compare("Dmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.D.F#/Gb.A.n/a";
-    } else if(chordName.compare("D#maj") == 0 || chordName.compare("Ebmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.D#/Eb.G.A#/Bb.n/a";
-    } else if(chordName.compare("Emaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.E.G#/Ab.B.n/a";
-    } else if(chordName.compare("Fmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.F.A.C.n/a";
-    } else if(chordName.compare("F#maj") == 0 || chordName.compare("Gbmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.F#/Gb.A#/Bb.C#/Db.n/a";
-    } else if(chordName.compare("Gmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.G.B.D.n/a";
-    } else if(chordName.compare("G#maj") == 0 || chordName.compare("Abmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.G#/Ab.C.D#/Eb.n/a";
-    } else if(chordName.compare("Amaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.A.C#/Db.E.n/a";
-    } else if(chordName.compare("A#maj") == 0 || chordName.compare("Bbmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.A#/Bb.D.F.n/a";
-    } else if(chordName.compare("Bmaj") == 0) {
-        chordInfo = "Major.Root.Major Third.Perfect Fifth.n/a.B.D#/Eb.F#/Gb.n/a";
-    } 
+bool isValidNote(const string& note) {
+    //checks for valid note entry
+    static const set<string> validNotes = {"A", "B", "C", "D", "E", "F", "G", "A#", "Bb", "C#", "Db", "D#", "Eb", "F#", "Gb", "G#", "Ab"};
+    return validNotes.count(note) > 0;
+}
 
-    //Major Seventh Chords Archive
-    else if(chordName.compare("Cmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.C.E.G.B";
-    } else if(chordName.compare("C#maj7") == 0 || chordName.compare("Dbmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.C#/Db.F.G#/Ab.C";
-    } else if(chordName.compare("Dmaj7") == 0) {
-    chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.D.F#/Gb.A.C#/Db";
-    } else if(chordName.compare("D#maj7") == 0 || chordName.compare("Ebmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.D#/Eb.G.A#/Bb.D";
-    } else if(chordName.compare("Emaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.E.G#/Ab.B.D#/Eb";
-    } else if(chordName.compare("Fmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.F.A.C.E";
-    } else if(chordName.compare("F#maj7") == 0 || chordName.compare("Gbmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.F#/Gb.A#/Bb.C#/Db.F";
-    } else if(chordName.compare("Gmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.G.B.D.F#/Gb";
-    } else if(chordName.compare("G#maj7") == 0 || chordName.compare("Abmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.G#/Ab.C.Eb/G.F#/G";
-    } else if(chordName.compare("Amaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.A.C#/Db.E.G#/Ab";
-    } else if(chordName.compare("A#maj7") == 0 || chordName.compare("Bbmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.A#/Bb.D.F.A";
-    } else if(chordName.compare("Bmaj7") == 0) {
-        chordInfo = "Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh.B.D#/Eb.F#/Gb.A#/Bb";
+bool isValidChordType(const string& type) {
+    //checks for valid chord type entry
+    static const set<string> validTypes = {"maj", "maj7", "m", "m7", "7", "dim", "aug", "aug7", "sus2", "sus4"};
+    return validTypes.count(type) > 0;
+}
+
+string changeNoteFormat(string note) {
+    //takes the input note and changes it to match the musicScale
+    string output = "";
+
+    if(note.compare("F#") == 0 || note.compare("Gb") == 0) {
+        output = "F#/Gb";
+    } else if(note.compare("G#") == 0 || note.compare("Ab") == 0) {
+        output = "G#/Ab";
+    } else if(note.compare("A#") == 0 || note.compare("Bb") == 0) {
+        output = "A#/Bb";
+    } else if(note.compare("C#") == 0 || note.compare("Db") == 0) {
+        output = "C#/Db";
+    } else if(note.compare("D#") == 0 || note.compare("Eb") == 0) {
+        output = "D#/Eb";
+    } else if(note.compare("E#") == 0) {
+        output = "F";
+    } else if(note.compare("Fb") == 0) {
+        output = "E";
+    }  else if(note.compare("B#") == 0) {
+        output = "C";
+    }  else if(note.compare("Cb") == 0) {
+        output = "B";
+    }else {
+        output = note;
+    }
+    return output;
+}
+
+string findOtherNoteOffOfRoot(string root, int distance) {
+    //music scale to locate notes
+    vector<string> musicScale = {"E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E"};
+    string foundNote = "";
+ 
+    //loop through and find the root, then grab note *distance* semi-tones away 
+    for (int i = 0; i < musicScale.size(); i++) {
+        if(musicScale[i] == root) {
+            foundNote = musicScale[(i + distance) % 12];
+            break;
+        }
+    }
+
+    return foundNote;
+}
+
+string buildChordInfoString(string initialInfo, string root, string note1, string note2, string note3) {
+    //sppend everything together
+    string chordInfo = initialInfo + "." + root + "." + note1 + "." + note2 + "." + note3;
+    return chordInfo;
+    
+}
+
+string generateChordInfo(string chordName) {
+    string tokenStorage;
+    string output, note1, note2, note3;
+
+    stringstream ss(chordName);
+    vector<string> chordNameVector;
+
+    //break input from user into vector
+    while (getline(ss, tokenStorage, ' ')) {
+        chordNameVector.push_back(tokenStorage);
+    }
+
+    //check for valid input size, valid root note, and valid chord type
+    if (chordNameVector.size() != 2 || !isValidNote(chordNameVector[0]) || !isValidChordType(chordNameVector[1])) {
+        return "Error";
+    }
+
+    string rootNote = changeNoteFormat(chordNameVector[0]);
+
+    // chordInfo Structure: [Type of Chord].[Root].[Type of 3rd/2nd/4th].[Type of 5th].[Type of 7th (if applicable)].[Note 1].[Note 2].[Note 3].[Note 4(if applicable)]
+    if(chordNameVector[1].compare("maj") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        output = buildChordInfoString("Major.Root.Major Third.Perfect Fifth.n/a", rootNote, note1, note2, "n/a"); 
+    } else if (chordNameVector[1].compare("maj7") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        note3 = findOtherNoteOffOfRoot(rootNote, 11);
+        output = buildChordInfoString("Major Seventh.Root.Major Third.Perfect Fifth.Major Seventh", rootNote, note1, note2, note3); 
+    } else if (chordNameVector[1].compare("m") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 3);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        output = buildChordInfoString("Minor.Root.Minor Third.Perfect Fifth.n/a", rootNote, note1, note2, "n/a"); 
+    } else if (chordNameVector[1].compare("m7") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        note3 = findOtherNoteOffOfRoot(rootNote, 10);
+        output = buildChordInfoString("Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh", rootNote, note1, note2, note3);
+    } else if (chordNameVector[1].compare("7") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        note3 = findOtherNoteOffOfRoot(rootNote, 10);
+        output = buildChordInfoString("Dominant.Root.Major Third.Perfect Fifth.Minor Seventh", rootNote, note1, note2, note3);
+    } else if (chordNameVector[1].compare("dim") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 3);
+        note2 = findOtherNoteOffOfRoot(rootNote, 6);
+        output = buildChordInfoString("Diminished.Root.Minor Third.Diminished Fifth.n/a", rootNote, note1, note2, "n/a");  
+    } else if (chordNameVector[1].compare("aug") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 8);
+        output = buildChordInfoString("Augmented.Root.Major Third.Augmented Fifth.n/a", rootNote, note1, note2, "n/a");  
+    } else if (chordNameVector[1].compare("aug7") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note2 = findOtherNoteOffOfRoot(rootNote, 8);
+        note3 = findOtherNoteOffOfRoot(rootNote, 10);
+        output = buildChordInfoString("Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh", rootNote, note1, note2, note3);
+    } else if (chordNameVector[1].compare("sus2") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 2);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        output = buildChordInfoString("Suspended Second.Root.Major Second.Perfect Fifth.n/a", rootNote, note1, note2, "n/a");
+    } else if (chordNameVector[1].compare("sus4") == 0) {
+        note1 = findOtherNoteOffOfRoot(rootNote, 5);
+        note2 = findOtherNoteOffOfRoot(rootNote, 7);
+        output = buildChordInfoString("Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a", rootNote, note1, note2, "n/a");
+    } else {
+        cout << "Error";
     }
     
-    //Minor Chords Archive
-    else if(chordName.compare("Cm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.C.Eb/G.G.n/a";
-    } else if(chordName.compare("C#m") == 0 || chordName.compare("Dbm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.C#/Db.E.G#/Ab.n/a";
-    } else if(chordName.compare("Dm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.D.F.A.n/a";
-    } else if(chordName.compare("D#m") == 0 || chordName.compare("Ebm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.D#/Eb.F#/Gb.A#/Bb.n/a";
-    } else if(chordName.compare("Em") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.E.G.B.n/a";
-    } else if(chordName.compare("Fm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.F.Ab/C.C.n/a";
-    } else if(chordName.compare("F#m") == 0 || chordName.compare("Gbm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.F#/Gb.A.C#/Db.n/a";
-    } else if(chordName.compare("Gm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.G.Bb/D.D.n/a";
-    } else if(chordName.compare("G#m") == 0 || chordName.compare("Abm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.G#/Ab.B.D#/Eb.n/a";
-    } else if(chordName.compare("Am") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.A.C.E.n/a";
-    } else if(chordName.compare("A#m") == 0 || chordName.compare("Bbm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.A#/Bb.C#/Db.F.n/a";
-    } else if(chordName.compare("Bm") == 0) {
-        chordInfo = "Minor.Root.Minor Third.Perfect Fifth.n/a.B.D.F#/Gb.n/a";
-    } 
-
-    //Minor Seventh Chords Archive
-    else if(chordName.compare("Cm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.C.Eb/G.D#/Eb.A#/Bb";
-    } else if(chordName.compare("C#m7") == 0 || chordName.compare("Dbm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.C#/Db.E.G#/Ab.B";
-    } else if(chordName.compare("Dm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.D.F.A.C";
-    } else if(chordName.compare("D#m7") == 0 || chordName.compare("Ebm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.D#/Eb.F#/Gb.A#/Bb.C#/Db";
-    } else if(chordName.compare("Em7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.E.G.B.D";
-    } else if(chordName.compare("Fm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.F.Ab/C.G#/Ab.D#/Eb";
-    } else if(chordName.compare("F#m7") == 0 || chordName.compare("Gbm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.F#/Gb.A.C#/Db.E";
-    } else if(chordName.compare("Gm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.G.Bb/D.A#/Bb.F";
-    } else if(chordName.compare("G#m7") == 0 || chordName.compare("Abm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.G#/Ab.B/D#.C#/Db.F#/Gb";
-    } else if(chordName.compare("Am7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.A.C.E.G";
-    } else if(chordName.compare("A#m7") == 0 || chordName.compare("Bbm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.A#/Bb.C#/Db.F.A#/Bb";
-    } else if(chordName.compare("Bm7") == 0) {
-        chordInfo = "Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh.B.D.F#/Gb.A";
-    }
-
-    //Dominant Seventh Chords Archive
-    else if(chordName.compare("C7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.C.E.G.A#/Bb";
-    } else if(chordName.compare("C#7") == 0 || chordName.compare("Db7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.C#/Db.F.G#/Ab.C/B";
-    } else if(chordName.compare("D7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.D.F#/Gb.A.C";
-    } else if(chordName.compare("D#7") == 0 || chordName.compare("Eb7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.D#/Eb.G.A#/Bb.C#/Db";
-    } else if(chordName.compare("E7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.E.G#/Ab.B.D";
-    } else if(chordName.compare("F7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.F.A.C.D#/Eb";
-    } else if(chordName.compare("F#7") == 0 || chordName.compare("Gb7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.F#/Gb.A#/Bb.C#/Db.E";
-    } else if(chordName.compare("G7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.G.B.D.F";
-    } else if(chordName.compare("G#7") == 0 || chordName.compare("Ab7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.G#/Ab.C.Eb/Gb.F#/Gb";
-    } else if(chordName.compare("A7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.A.C#/Db.E.G";
-    } else if(chordName.compare("A#7") == 0 || chordName.compare("Bb7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.A#/Bb.D.F.A";
-    } else if(chordName.compare("B7") == 0) {
-        chordInfo = "Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh.B.D#/Eb.F#/Gb.A";
-    }
- 
-    //Diminished Chords Archive
-    else if(chordName.compare("Cdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C.D#/Eb.F#/Gb.n/a";
-    }else if(chordName.compare("C#dim") == 0 || chordName.compare("Dbdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.C#/Db.E.G.n/a";
-    } else if(chordName.compare("Ddim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.D.F.A#/Bb.n/a";
-    } else if(chordName.compare("D#dim") == 0 || chordName.compare("Ebdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.D#/Eb.F#/Gb.B.n/a";
-    } else if(chordName.compare("Edim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.E.G.C#/Db.n/a";
-    } else if(chordName.compare("Fdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.F.G#/Ab.D.n/a";
-    } else if(chordName.compare("F#dim") == 0 || chordName.compare("Gbdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.F#/Gb.A.D#/Eb.n/a";
-    } else if(chordName.compare("Gdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.G.A#/Bb.E.n/a";
-    } else if(chordName.compare("G#dim") == 0 || chordName.compare("Abdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.G#/Ab.B.F#/Gb.n/a";
-    } else if(chordName.compare("Adim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.A.C.G.n/a";
-    } else if(chordName.compare("A#dim") == 0 || chordName.compare("Bbdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.A#/Bb.C#/Db.G#/Ab.n/a";
-    } else if(chordName.compare("Bdim") == 0) {
-        chordInfo = "Diminished.Root.Minor Third.Diminished Fifth.n/a.B.D.F.n/a";
-    }
-
-    //Augmented Chords Archive
-    else if(chordName.compare("Caug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.C.E.G#/Ab.n/a";
-    } else if(chordName.compare("C#aug") == 0 || chordName.compare("Dbaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.C#/Db.F.A.n/a";
-    } else if(chordName.compare("Daug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.D.F#/Gb.A#/Bb.n/a";
-    } else if(chordName.compare("D#aug") == 0 || chordName.compare("Ebaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.D#/Eb.G.B.n/a";
-    } else if(chordName.compare("Eaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.E.G#/Ab.C.n/a";
-    } else if(chordName.compare("Faug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.F.A.C#/Db.n/a";
-    } else if(chordName.compare("F#aug") == 0 || chordName.compare("Gbaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.F#/Gb.A#/Bb.D.n/a";
-    } else if(chordName.compare("Gaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.G.B.D#/Eb.n/a";
-    } else if(chordName.compare("G#aug") == 0 || chordName.compare("Abaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.G#/Ab.C.E.n/a";
-    } else if(chordName.compare("Aaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.A.C#/Db.F.n/a";
-    } else if(chordName.compare("A#aug") == 0 || chordName.compare("Bbaug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.A#/Bb.D.F#/Gb.n/a";
-    } else if(chordName.compare("Baug") == 0) {
-        chordInfo = "Augmented.Root.Major Third.Augmented Fifth.n/a.B.D#/Eb.G.n/a";
-    }
-
-    //Augmented Seventh Chords Archive
-    else if(chordName.compare("Caug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.C.E.G#/Ab.A#/Bb";
-    } else if(chordName.compare("C#aug7") == 0 || chordName.compare("Dbaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.C#/Db.F.A.B";
-    } else if(chordName.compare("Daug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.D.F#/Gb.A#/Bb.C";
-    } else if(chordName.compare("D#aug7") == 0 || chordName.compare("Ebaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.D#/Eb.G.B.C#/Db";
-    } else if(chordName.compare("Eaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.E.G#/Ab.C.D";
-    } else if(chordName.compare("Faug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.F.A.C#/Db.D#/Eb";
-    } else if(chordName.compare("F#aug7") == 0 || chordName.compare("Gbaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.F#/Gb.A#/Bb.D.E";
-    } else if(chordName.compare("Gaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.G.B.D#/Eb.F";
-    } else if(chordName.compare("G#aug7") == 0 || chordName.compare("Abaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.G#/Ab.C.E.F#/Gb";
-    } else if(chordName.compare("Aaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.A.C#/Db.F.G";
-    } else if(chordName.compare("A#aug7") == 0 || chordName.compare("Bbaug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.A#/Bb.D.F#/Gb.G#/Ab";
-    } else if(chordName.compare("Baug7") == 0) {
-        chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.B.D#/Eb.G.A";
-    }
-
-    //Suspended Second Chords Archive
-    else if(chordName.compare("Csus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.C.D.G.n/a";
-    } else if(chordName.compare("C#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.C#/Db.D#/Eb.G#/Ab.n/a";
-    } else if(chordName.compare("Dsus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D.E.A.n/a";
-    } else if(chordName.compare("D#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D#/Eb.F.A#/Bb.n/a";
-    } else if(chordName.compare("D#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D#/Eb.F.A#/Bb.n/a";
-    } else if(chordName.compare("Esus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.E.F#/Gb.B.n/a";
-    } else if(chordName.compare("Fsus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.F.G.C.n/a";
-    } else if(chordName.compare("F#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.F#/Gb.G#/Ab.C#/Db.n/a";
-    } else if(chordName.compare("Gsus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.G.A.D.n/a";
-    } else if(chordName.compare("G#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.G#/Ab.A#/Bb.D#/Eb.n/a";
-    } else if(chordName.compare("Asus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.A.B.E.n/a";
-    } else if(chordName.compare("A#sus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.A#/Bb.C.F.n/a";
-    } else if(chordName.compare("Bsus2") == 0) {
-        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.B.C#/Db.F#/Gb.n/a";
-    }
-
-    //Suspended Fourth Chords Archive
-    else if(chordName.compare("Csus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.C.F.G.n/a";
-    } else if(chordName.compare("C#sus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.C#/Db.F#/Gb.G#/Ab.n/a";
-    } else if(chordName.compare("Dsus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.D.G.A.n/a";
-    } else if(chordName.compare("D#sus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.D#/Eb.G#/Ab.A#/Bb.n/a";
-    } else if(chordName.compare("Esus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.E.A.B.n/a";
-    } else if(chordName.compare("Fsus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.F.A#/Bb.C.n/a";
-    } else if(chordName.compare("F#sus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.F#/Gb.B.C#/Db.n/a";
-    } else if(chordName.compare("Gsus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.G.C.D.n/a";
-    } else if(chordName.compare("G#sus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.G#/Ab.C#/Db.D#/Eb.n/a";
-    } else if(chordName.compare("Asus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.A.D.E.n/a";
-    } else if(chordName.compare("A#sus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.A#/Bb.E.F.n/a";
-    } else if(chordName.compare("Bsus4") == 0) {
-        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.B.E.F#/Gb.n/a";
-    }
-
-    //Else Case
-    else {
-        chordInfo = "Error";
-    }
-
-    return chordInfo;
+    return output;
 }
 
 vector<string> populateGuitarString(string chordInfo, string stringName) {
@@ -357,20 +231,29 @@ int main() {
     bool keepGoing = true;
     string continueInput;
     bool validChordInput = false;
-                                                             
-    cout << "Welcome to the Guitar Buddy!" << endl << endl;
-    cout << "This program is compatible with " << endl;
 
+    //ASCII art created by https://www.asciiart.eu/text-to-ascii-art
+    //Maybe need to remove for later deployment
+    cout << "+=============================================================+|\n";
+    cout << "|  ____       _ _               ____            _     _       |\n";
+    cout << "| / ___|_   _(_) |_ __ _ _ __  | __ ) _   _  __| | __| |_   _ |\n";
+    cout << "|| |  _| | | | | __/ _` | '__| |  _ \\| | | |/ _` |/ _` | | | ||\n";
+    cout << "|| |_| | |_| | | || (_| | |    | |_) | |_| | (_| | (_| | |_| ||\n";
+    cout << "| \\____|\\__,_|_|\\__\\__,_|_|    |____/ \\__,_|\\__,_|\\__,_|\\__, ||\n";
+    cout << "|                                                       |___/ |\n";
+    cout << "+=============================================================+\n";
+
+    cout << endl << endl;
     //runtime loop
     while (keepGoing) {
         while(validChordInput == false) {
             cout << "Please Input the Chord You'd Like to Map: ";
-            cin >> chordInput;
+            getline(cin, chordInput);
 
-            string testChordInfo = getChordInfo(chordInput);
+            string testChordInfo = generateChordInfo(chordInput);
 
-            if(testChordInfo.compare("Error") == 0) {
-                cout << endl << "Unrecognised Chord Input. Please check your formatting. Ex. C#m, Amaj, Em, Gaug7" << endl;
+            if(testChordInfo.find("Error") != string::npos) {
+                cout << endl << "Unrecognised Chord Input. Please check your formatting. Ex. C# m, A maj, E m, G aug7" << endl;
             }
             else {
                 validChordInput = true;
@@ -379,7 +262,7 @@ int main() {
         }
         validChordInput = false;
         
-        string chordInfo = getChordInfo(chordInput);
+        string chordInfo = generateChordInfo(chordInput);
 
         //populate chordInfoVector
         vector<string> chordInfoVector;
@@ -430,7 +313,7 @@ int main() {
         //loop to continue acceptting more chords
         while (true) {
             cout << endl << "Map Another Chord? [Y/N]: ";
-            cin >> continueInput;
+            getline(cin, continueInput);
             if (continueInput == "N" || continueInput == "n") {
                 keepGoing = false;
                 break;

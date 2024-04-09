@@ -5,16 +5,16 @@ The Guitar Song Writing Buddy is a tool to aid songwriters and guitarists in vis
 
 ## Features
 - Supports all of the following chords in Standard Tuning:
-   * Major (_maj or _#maj)
-   * Minor (_m or _#m)
-   * Major 7th (_maj7 or _#maj7)
-   * Minor 7th (_m7 or _#m7)
-   * Dominant 7th (_7 or _#7)
-   * Diminished (_dim or _#dim)
-   * Augmented (_aug or _#aug)
-   * Augmented 7th (_aug7 or _#aug7)
-   * Suspended Second (_sus2 or _#sus2)
-   * Suspended Fourth (_sus4 or _#sus4)
+   * Major (_ maj or _ #maj)
+   * Minor (_ m or _ #m)
+   * Major 7th (_ maj7 or _ #maj7)
+   * Minor 7th (_ m7 or _ #m7)
+   * Dominant 7th (_ 7 or _ #7)
+   * Diminished (_ dim or _ #dim)
+   * Augmented (_ aug or _ #aug)
+   * Augmented 7th (_ aug7 or _ #aug7)
+   * Suspended Second (_ sus2 or _ #sus2)
+   * Suspended Fourth (_ sus4 or _ #sus4)
 - Visual representation of finger placement on guitar strings/frets.
 - Details all necessary notes for each chord (e.g. Root, Minor Third, Perfect Fifth, etc.)
 - Interactive command-line interface.
@@ -48,21 +48,21 @@ To use the program, follow these directions:
 
 ## Example
 ```
-Please Input Chord: Amaj
+Please Input the Chord You'd Like to Map: C# maj7
 
-Amaj Chord: 
-Comprised of Root(A), Major Third(C#/Db), and Perfect Fifth(E)
+C# maj7 Chord: 
+Comprised of Root(C#/Db), Major Third(F), Perfect Fifth(G#/Ab), and Major Seventh(C)
      __________________________________________________
-E: 5 ||---|---|---|---|-R-|---|---|---|-3-|---|---|-5-|
-B:   ||---|-3-|---|---|-5-|---|---|---|---|-R-|---|---|
-G:   ||---|-R-|---|---|---|-3-|---|---|-5-|---|---|---|
-D:   ||---|-5-|---|---|---|---|-R-|---|---|---|-3-|---|
-A: R ||---|---|---|-3-|---|---|-5-|---|---|---|---|-R-|
-E: 5 ||---|---|---|---|-R-|---|---|---|-3-|---|---|-5-|
+E:   ||-3-|---|---|-5-|---|---|---|-7-|-R-|---|---|---|
+B:   ||-7-|-R-|---|---|---|-3-|---|---|-5-|---|---|---|
+G:   ||-5-|---|---|---|-7-|-R-|---|---|---|-3-|---|---|
+D:   ||---|---|-3-|---|---|-5-|---|---|---|-7-|-R-|---|
+A:   ||---|---|-7-|-R-|---|---|---|-3-|---|---|-5-|---|
+E:   ||-3-|---|---|-5-|---|---|---|-7-|-R-|---|---|---|
      ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                 3       5       7       9          12
 
-Map Another Chord? [Y/N]:
+Map Another Chord? [Y/N]: 
 ```
 
 ## Future Plans
@@ -72,3 +72,7 @@ Map Another Chord? [Y/N]:
 
 ## Contact
 If you have any questions, issues, or want to collaborate, please contact me at turnerandrew284@gmail.com
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
