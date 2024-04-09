@@ -225,6 +225,61 @@ string getChordInfo(string chordName) {
         chordInfo = "Augmented Seventh.Root.Major Third.Augmented Fifth.Minor Seventh.B.D#/Eb.G.A";
     }
 
+    //Suspended Second Chords Archive
+    else if(chordName.compare("Csus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.C.D.G.n/a";
+    } else if(chordName.compare("C#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.C#/Db.D#/Eb.G#/Ab.n/a";
+    } else if(chordName.compare("Dsus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D.E.A.n/a";
+    } else if(chordName.compare("D#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D#/Eb.F.A#/Bb.n/a";
+    } else if(chordName.compare("D#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.D#/Eb.F.A#/Bb.n/a";
+    } else if(chordName.compare("Esus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.E.F#/Gb.B.n/a";
+    } else if(chordName.compare("Fsus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.F.G.C.n/a";
+    } else if(chordName.compare("F#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.F#/Gb.G#/Ab.C#/Db.n/a";
+    } else if(chordName.compare("Gsus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.G.A.D.n/a";
+    } else if(chordName.compare("G#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.G#/Ab.A#/Bb.D#/Eb.n/a";
+    } else if(chordName.compare("Asus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.A.B.E.n/a";
+    } else if(chordName.compare("A#sus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.A#/Bb.C.F.n/a";
+    } else if(chordName.compare("Bsus2") == 0) {
+        chordInfo = "Suspended Second.Root.Major Second.Perfect Fifth.n/a.B.C#/Db.F#/Gb.n/a";
+    }
+
+    //Suspended Fourth Chords Archive
+    else if(chordName.compare("Csus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.C.F.G.n/a";
+    } else if(chordName.compare("C#sus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.C#/Db.F#/Gb.G#/Ab.n/a";
+    } else if(chordName.compare("Dsus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.D.G.A.n/a";
+    } else if(chordName.compare("D#sus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.D#/Eb.G#/Ab.A#/Bb.n/a";
+    } else if(chordName.compare("Esus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.E.A.B.n/a";
+    } else if(chordName.compare("Fsus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.F.A#/Bb.C.n/a";
+    } else if(chordName.compare("F#sus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.F#/Gb.B.C#/Db.n/a";
+    } else if(chordName.compare("Gsus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.G.C.D.n/a";
+    } else if(chordName.compare("G#sus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.G#/Ab.C#/Db.D#/Eb.n/a";
+    } else if(chordName.compare("Asus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.A.D.E.n/a";
+    } else if(chordName.compare("A#sus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.A#/Bb.E.F.n/a";
+    } else if(chordName.compare("Bsus4") == 0) {
+        chordInfo = "Suspended Fourth.Root.Perfect Fourth.Perfect Fifth.n/a.B.E.F#/Gb.n/a";
+    }
 
     //Else Case
     else {
@@ -240,12 +295,13 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
     istringstream iss(chordInfo);
     string part;
 
+
     //split string and break into chordInfoVector 
     while (getline(iss, part, '.')) {
         chordInfoVector.push_back(part);
     }
     //attribute values for chord into  variables
-    string root = chordInfoVector[5], third = chordInfoVector[6], fifth = chordInfoVector[7], seventh = chordInfoVector[8];
+    string chordName = chordInfoVector[0], root = chordInfoVector[5], third = chordInfoVector[6], fifth = chordInfoVector[7], seventh = chordInfoVector[8];
 
     //Master array for each string in standard tuning
     map<string, vector<string>> masterArrays;
@@ -264,10 +320,19 @@ vector<string> populateGuitarString(string chordInfo, string stringName) {
     if(masterArrays.find(stringName) != masterArrays.end()) {
         const vector<string>& masterArray = masterArrays[stringName];
         for(size_t i = 0; i < masterArray.size(); ++i) {
-            if(masterArray[i] == root) populatedStrings[i] = "R";
-            else if(masterArray[i] == third) populatedStrings[i] = "3";
-            else if(masterArray[i] == fifth) populatedStrings[i] = "5";
-            else if(masterArray[i] == seventh) populatedStrings[i] = "7";
+            if(masterArray[i] == root){
+                populatedStrings[i] = "R";
+            } else if(masterArray[i] == third && chordName.compare("Suspended Second") != 0 && chordName.compare("Suspended Fourth") != 0) {
+                populatedStrings[i] = "3";
+            } else if(masterArray[i] == third && chordName.compare("Suspended Second") == 0) {
+                populatedStrings[i] = "2";
+            } else if(masterArray[i] == third && chordName.compare("Suspended Fourth") == 0) {
+                populatedStrings[i] = "4";
+            } else if(masterArray[i] == fifth) {
+                populatedStrings[i] = "5";
+            } else if(masterArray[i] == seventh) {
+                populatedStrings[i] = "7";
+            }
         }
     }
     return populatedStrings;
@@ -299,7 +364,7 @@ int main() {
     //runtime loop
     while (keepGoing) {
         while(validChordInput == false) {
-            cout << "Please Input Chord You'd Like to Map: ";
+            cout << "Please Input the Chord You'd Like to Map: ";
             cin >> chordInput;
 
             string testChordInfo = getChordInfo(chordInput);
