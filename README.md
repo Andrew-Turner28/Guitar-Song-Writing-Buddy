@@ -5,16 +5,18 @@ The Guitar Song Writing Buddy is a tool to aid songwriters and guitarists in vis
 
 ## Features
 - Supports all of the following chords in Standard Tuning:
-   * Major
-   * Minor
-   * Major 7th
-   * Minor 7th
-   * Dominant 7th
-   * Diminished
-   * Augmented
-   * Augmented 7th chords
+   * Major (_maj or _#maj)
+   * Minor (_m or _#m)
+   * Major 7th (_maj7 or _#maj7)
+   * Minor 7th (_m7 or _#m7)
+   * Dominant 7th (_7 or _#7)
+   * Diminished (_dim or _#dim)
+   * Augmented (_aug or _#aug)
+   * Augmented 7th (_aug7 or _#aug7)
+   * Suspended Second (_sus2 or _#sus2)
+   * Suspended Fourth (_sus4 or _#sus4)
 - Visual representation of finger placement on guitar strings/frets.
-- Details all necessary notes for each chord (ex. Root, Minor Third, Perfect Fifth, etc.)
+- Details all necessary notes for each chord (e.g. Root, Minor Third, Perfect Fifth, etc.)
 - Interactive command-line interface.
 
 ## Prerequisites
@@ -40,7 +42,7 @@ clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
 To use the program, follow these directions:
 
 1. Run the program in your command-line.
-2. When prompted, enter your chord (ex. Am, C#maj, Gmaj).
+2. When prompted, enter your chord (e.g. Am, C#maj, Gmaj).
 3. The program will print out an ASCII representation of the guitar freboard with highlighted root (R), third(3), and fifth(5) notes marking their location.
 4. Continue to map more chords, or exit the program.
 
@@ -64,7 +66,7 @@ Map Another Chord? [Y/N]:
 ```
 
 ## Future Plans
-- Expand compatible chords to include: Sus2 and Sus4 chords.
+- Expand compatible chords to include more complex chords (e.g. Slash/Split Chords, 6th Chords, etc.).
 - Support for alternate tunings.
 - Eventual launch as a hosted web application.
 
