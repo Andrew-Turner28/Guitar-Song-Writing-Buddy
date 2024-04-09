@@ -126,7 +126,7 @@ string generateChordInfo(string chordName) {
         note2 = findOtherNoteOffOfRoot(rootNote, 7);
         output = buildChordInfoString("Minor.Root.Minor Third.Perfect Fifth.n/a", rootNote, note1, note2, "n/a"); 
     } else if (chordNameVector[1].compare("m7") == 0) {
-        note1 = findOtherNoteOffOfRoot(rootNote, 4);
+        note1 = findOtherNoteOffOfRoot(rootNote, 3);
         note2 = findOtherNoteOffOfRoot(rootNote, 7);
         note3 = findOtherNoteOffOfRoot(rootNote, 10);
         output = buildChordInfoString("Minor Seventh.Root.Minor Third.Perfect Fifth.Minor Seventh", rootNote, note1, note2, note3);
@@ -134,7 +134,7 @@ string generateChordInfo(string chordName) {
         note1 = findOtherNoteOffOfRoot(rootNote, 4);
         note2 = findOtherNoteOffOfRoot(rootNote, 7);
         note3 = findOtherNoteOffOfRoot(rootNote, 10);
-        output = buildChordInfoString("Dominant.Root.Major Third.Perfect Fifth.Minor Seventh", rootNote, note1, note2, note3);
+        output = buildChordInfoString("Dominant Seventh.Root.Major Third.Perfect Fifth.Minor Seventh", rootNote, note1, note2, note3);
     } else if (chordNameVector[1].compare("dim") == 0) {
         note1 = findOtherNoteOffOfRoot(rootNote, 3);
         note2 = findOtherNoteOffOfRoot(rootNote, 6);
