@@ -42,7 +42,7 @@ clang++ -std=c++11 GuitarBuddyPrototype.cpp -o guitarBuddy
 To use the program, follow these directions:
 
 1. Run the program in your command-line.
-2. When prompted, enter your chord (e.g. Am, C#maj, Gmaj).
+2. When prompted, enter your chord (e.g. A m, C# maj, G maj).
 3. The program will print out an ASCII representation of the guitar freboard with highlighted root (R), third(3), and fifth(5) notes marking their location.
 4. Continue to map more chords, or exit the program.
 
